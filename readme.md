@@ -9,3 +9,4 @@ Everything is written in Python, runs on `python 3.8.10`
 VS Code: 
 1. Open a new terminal by ctrl+shift+`
 2. Run `python main.py` 
+

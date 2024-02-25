@@ -1,3 +1,4 @@
+# This program is a simple example of mediapipe facemesh solution                                                                                                    
 import mediapipe as mp
 import numpy as np
 import cv2
