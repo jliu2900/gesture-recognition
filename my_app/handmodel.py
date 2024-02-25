@@ -11,9 +11,6 @@ class HandModel:
   def get_fingertip_coordinates(self):
     _, image = self.image.read() 
 
-    print(image)
-    print(type(image))
-
     if image is None:
       return None
     
@@ -31,9 +28,8 @@ class HandModel:
         fingertip_y = hand_landmarks.landmark[mp.solutions.hands.HandLandmark.INDEX_FINGER_TIP].y
         coordinates.append((fingertip_x, fingertip_y))  # Append as tuple
 
-    # Call the callback function with the extracted coordinates
-    if self.callback_fn:
-      self.callback_fn(coordinates)
+    # Display the processed frame
+    cv2.imshow('Hand Tracking', image)
 
     # return the coordinates    
     return coordinates 
@@ -42,6 +38,11 @@ class HandModel:
     # Continuously captures frames, extracts coordinates, and calls the callback.
     while True: 
       coordinates = self.get_fingertip_coordinates()
+
+      # Call the callback function with the extracted coordinates
+      if self.callback_fn:
+        self.callback_fn(coordinates)
+
       if cv2.waitKey(1) == ord('q'):
         break
     
